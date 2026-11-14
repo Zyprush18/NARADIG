@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NARADIG | Satu Klaim, Seribu Versi</title>
+<meta name="description" content="NARADIG melacak bagaimana klaim menyebar dan berubah lintas sumber publik, dengan jejak data dan review manusia.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0d0d14;--ink2:#171723;--lime:#d9f27a;--vio:#8a63ee;--paper:#f4f3ee;--tx:#f2f2f7;--mut:#9a9aae;--line:#ffffff1f;--coral:#ff7a66}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--tx);font:400 16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}a{color:inherit;text-decoration:none}
+.d{font-family:'Space Grotesk',sans-serif;letter-spacing:-.035em}.m{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.wrap{max-width:1360px;margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+/* nav */
+.nav{position:fixed;z-index:50;top:16px;left:50%;transform:translateX(-50%);width:min(960px,calc(100% - 24px));display:flex;align-items:center;gap:20px;padding:10px 12px 10px 20px;border-radius:99px;background:#14141fb3;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:9px;font:700 17px 'Space Grotesk';letter-spacing:-.02em}.logo b{width:10px;height:10px;border-radius:50%;background:var(--lime);box-shadow:0 0 14px var(--lime)}
+.nav nav{display:flex;gap:24px;margin:0 auto;font-size:14px;color:var(--mut)}.nav nav a:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;gap:10px;border:0;cursor:pointer;font:600 14px Inter;border-radius:99px;padding:15px 28px;background:var(--lime);color:var(--ink);transition:.2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px #d9f27a40}.btn.sm{padding:10px 20px;font-size:13px}.btn.ghost{background:transparent;color:#fff;border:1px solid var(--line)}.btn.ghost:hover{box-shadow:none;background:#ffffff12}
+/* hero */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:120px 0 70px;overflow:hidden;background:radial-gradient(900px 500px at 85% 10%,#8a63ee33,transparent),radial-gradient(700px 500px at 0% 100%,#d9f27a1a,transparent),var(--ink)}
+#cv{position:absolute;inset:0;width:100%;height:100%}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;width:100%}
+.live{display:inline-flex;align-items:center;gap:10px;padding:7px 14px;border:1px solid var(--line);border-radius:99px;color:var(--mut);margin-bottom:26px}.live i{width:7px;height:7px;border-radius:50%;background:var(--lime);animation:p 1.6s infinite}
+@keyframes p{50%{opacity:.25}}
+h1{font-size:clamp(46px,7.2vw,104px);line-height:.98;font-weight:700}h1 em{font-style:normal;color:var(--lime)}
+.sub{font-size:19px;color:#c4c4d4;max-width:520px;margin:28px 0 36px}.row{display:flex;gap:14px;flex-wrap:wrap}
+/* explorer */
+.ex{background:#14141fcc;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:28px;padding:24px;box-shadow:0 40px 90px #0008}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tabs button{background:transparent;border:1px solid var(--line);color:var(--mut);border-radius:99px;padding:6px 14px;font:500 12px Inter;cursor:pointer}.tabs button.on{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+.ver{display:flex;gap:14px;align-items:flex-start;width:100%;text-align:left;background:transparent;border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin-bottom:10px;color:var(--tx);cursor:pointer;font:inherit;transition:.2s}
+.ver:hover{border-color:#ffffff40}.ver.on{background:#ffffff0d;border-color:var(--lime)}
+.ver .n{font:500 12px 'IBM Plex Mono';color:var(--mut);padding-top:3px}.ver small{display:block;color:var(--mut);font-size:12px}.ver mark{background:var(--lime);color:var(--ink);border-radius:5px;padding:0 5px;font-weight:600}
+.flag{margin-left:auto;white-space:nowrap;font-size:11px;font-weight:600;border-radius:99px;padding:3px 10px;background:#ff7a6628;color:#ffb4a8}.flag.o{background:#ffffff14;color:var(--mut)}
+.pr{display:flex;align-items:center;gap:14px;margin-top:16px;font-size:13px;color:var(--mut)}.pr .bar{flex:1;height:6px;background:#ffffff1a;border-radius:6px;overflow:hidden}.pr .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--vio),var(--lime));transition:width .5s}.pr b{font:700 26px 'Space Grotesk';color:#fff}
+/* marquee */
+.mq{border-block:1px solid var(--line);overflow:hidden;background:var(--ink2);padding:18px 0;white-space:nowrap}
+.mq div{display:inline-block;animation:mv 34s linear infinite;color:var(--mut)}.mq:hover div{animation-play-state:paused}.mq span{margin:0 26px}.mq span:nth-child(3n){color:var(--lime)}
+@keyframes mv{to{transform:translateX(-50%)}}
+section{padding:clamp(70px,10vw,130px) 0}
+h2{font-size:clamp(36px,5vw,68px);line-height:1.02;font-weight:700;max-width:860px}.lede{color:var(--mut);font-size:18px;max-width:560px;margin-top:20px}
+/* pipeline */
+.paper{background:var(--paper);color:var(--ink)}.paper .lede{color:#5c5c68}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:56px;position:relative;counter-reset:s}
+.steps:before{content:"";position:absolute;left:0;right:0;top:19px;border-top:2px dashed #16161f40}
+.st{position:relative;padding-right:22px}.st:before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--lime);font:600 14px 'IBM Plex Mono';margin-bottom:20px;position:relative}
+.st h3{font:600 19px 'Space Grotesk';margin-bottom:8px;letter-spacing:-.02em}.st p{font-size:14px;color:#5c5c68}
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:56px}
+.tile{background:var(--ink2);border:1px solid var(--line);border-radius:28px;padding:30px;position:relative;overflow:hidden;min-height:260px;transition:.25s}.tile:hover{border-color:#ffffff40;transform:translateY(-3px)}
+.tile h3{font:600 24px 'Space Grotesk';letter-spacing:-.02em;margin-bottom:8px}.tile p{color:var(--mut);font-size:15px;max-width:380px}
+.t1{grid-column:span 4}.t2{grid-column:span 2}.t3{grid-column:span 2}.t4{grid-column:span 2}.t5{grid-column:span 2}
+.t1{background:linear-gradient(135deg,#1f1a3d,var(--ink2))}
+.spark{display:flex;align-items:flex-end;gap:8px;height:90px;margin-top:26px}.spark i{flex:1;background:#ffffff26;border-radius:6px 6px 0 0}.spark i:nth-child(5){background:var(--lime)}
+.mock{margin-top:22px;display:grid;gap:8px;font:400 12px 'IBM Plex Mono'}.mock div{display:flex;justify-content:space-between;background:#ffffff0d;border-radius:10px;padding:8px 12px;color:var(--mut)}.mock b{color:var(--lime);font-weight:500}
+.dotl{display:flex;align-items:center;gap:0;margin-top:30px}.dotl i{width:12px;height:12px;border-radius:50%;background:var(--lime);flex:none}.dotl s{flex:1;height:2px;background:#ffffff33}.dotl i:nth-child(3){background:var(--coral)}.dotl i:nth-child(5){background:var(--vio)}
+/* score lab */
+.lab{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.sl{display:grid;gap:22px;background:var(--ink2);border:1px solid var(--line);border-radius:28px;padding:34px}
+.sl label{display:grid;gap:8px;font-size:14px}.sl label span{display:flex;justify-content:space-between;color:var(--mut)}.sl label span b{color:#fff;font:500 13px 'IBM Plex Mono'}
+input[type=range]{width:100%;accent-color:var(--lime);height:6px}
+.score{display:flex;align-items:baseline;gap:10px;border-top:1px solid var(--line);padding-top:20px}.score b{font:700 72px/1 'Space Grotesk';letter-spacing:-.04em;color:var(--lime)}.score span{color:var(--mut);font-size:14px}
+/* principles */
+.lime{background:var(--lime);color:var(--ink)}
+.lime h2{max-width:1000px}.pg{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:56px;border-top:2px solid var(--ink);padding-top:30px}
+.pg h3{font:700 20px 'Space Grotesk';margin-bottom:8px;letter-spacing:-.02em}.pg p{font-size:14px;color:#2b2b1a}.pg .m{display:block;margin-bottom:14px}
+/* contact */
+.ct{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:14px}label.f{display:grid;gap:6px;font-size:13px;color:var(--mut)}.full{grid-column:1/-1}
+input.i,textarea{font:400 15px Inter;color:#fff;background:var(--ink2);border:1px solid var(--line);border-radius:14px;padding:14px 16px;width:100%}textarea{min-height:110px;resize:vertical}input.i:focus,textarea:focus{border-color:var(--lime)}
+.err{color:#ffb4a8;font-size:12px;min-height:15px}.ok{display:none;background:#d9f27a22;border:1px solid var(--lime);border-radius:14px;padding:14px 18px;color:var(--lime);font-weight:500}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mut);font-size:13px}footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}footer nav{display:flex;gap:22px}
+/* loading screen */
+#pre{position:fixed;inset:0;z-index:100;background:var(--ink);display:grid;place-items:center;transition:opacity .7s ease,visibility .7s}
+#pre.done{opacity:0;visibility:hidden}body.loading{overflow:hidden}
+.pl{width:min(320px,76vw);display:grid;gap:22px;text-align:center}
+.pl .lg{display:flex;align-items:center;justify-content:center;gap:12px;font:700 30px 'Space Grotesk';letter-spacing:-.03em}
+.pl .lg b{width:14px;height:14px;border-radius:50%;background:var(--lime);box-shadow:0 0 22px var(--lime);animation:p 1.2s infinite}
+.pl .tr{height:3px;background:#ffffff1f;border-radius:3px;overflow:hidden}.pl .tr i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--vio),var(--lime));transition:width .25s ease-out}
+.pl .ct2{display:flex;justify-content:space-between;color:var(--mut)}
+.nw{width:120px;height:60px;margin:0 auto}.nw circle{fill:var(--lime);animation:p 1.6s infinite}.nw circle:nth-child(2){animation-delay:.3s}.nw circle:nth-child(3){animation-delay:.6s}.nw path{stroke:#d9f27a66;stroke-width:1.5;fill:none}
+/* modal login */
+.md{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:16px;background:#05050acc;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s;overflow:auto}
+.md.open{opacity:1;visibility:visible}
+.mc{position:relative;width:min(420px,100%);background:#14141f;border:1px solid var(--line);border-radius:28px;padding:34px 30px 28px;display:grid;gap:15px;box-shadow:0 40px 100px #000a;transform:translateY(18px) scale(.97);transition:transform .3s}
+.md.open .mc{transform:none}
+.mc h2{font:700 30px 'Space Grotesk';letter-spacing:-.03em;margin:0}.mc .sm{color:var(--mut);font-size:13px;margin:-8px 0 2px}
+.mx{position:absolute;right:14px;top:14px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--mut);font-size:18px;cursor:pointer;line-height:1}.mx:hover{color:#fff;border-color:#ffffff40}
+.pw{position:relative;display:block}.pw button{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:0;color:var(--mut);cursor:pointer;font:600 12px Inter}
+.mc .btn{width:100%;justify-content:center}
+.acc{display:flex;gap:8px;flex-wrap:wrap}.acc button{background:transparent;border:1px solid var(--line);color:#c4c4d4;border-radius:99px;padding:5px 12px;font:500 12px Inter;cursor:pointer}.acc button:hover{border-color:var(--lime);color:var(--lime)}
+.merr{display:none;background:#ff7a6624;color:#ffb4a8;border-radius:12px;padding:10px 14px;font-size:13px}.msuc{display:none;background:#d9f27a22;border:1px solid var(--lime);color:var(--lime);border-radius:12px;padding:10px 14px;font-size:13px;font-weight:500}
+@media(max-width:980px){
+ .nav nav{display:none}.nav{justify-content:space-between}.hero .wrap,.lab,.ct{grid-template-columns:1fr;gap:40px}
+ .steps{grid-template-columns:1fr;gap:26px}.steps:before{display:none}.bento{grid-template-columns:1fr}.tile{grid-column:auto!important}.pg{grid-template-columns:1fr 1fr}.form{grid-template-columns:1fr}
+}
+@media(max-width:560px){.pg{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body class="loading">
+<div id="pre" role="status" aria-live="polite" aria-label="Memuat NARADIG">
+ <div class="pl"><svg class="nw" viewBox="0 0 120 60" aria-hidden="true"><path d="M20 40 60 14 100 38M60 14V50M20 40 60 50 100 38"/><circle cx="20" cy="40" r="5"/><circle cx="60" cy="14" r="7"/><circle cx="100" cy="38" r="5"/><circle cx="60" cy="50" r="4"/></svg>
+  <div class="lg"><b></b>NARADIG</div><div class="tr"><i id="pbar"></i></div><div class="ct2 m"><span>Memuat</span><span id="pnum">0%</span></div></div>
+</div>
+<noscript><style>#pre{display:none}body.loading{overflow:auto}</style></noscript>
+<script>
+(function(){var b=document.getElementById('pbar'),n=document.getElementById('pnum'),pre=document.getElementById('pre'),v=0,ready=false,t0=Date.now(),MIN=1400,fin=false;
+ function set(x){v=x;b.style.width=x+'%';n.textContent=Math.round(x)+'%'}
+ var iv=setInterval(function(){if(!ready&&v<90)set(v+(90-v)*.08+.4)},90);
+ function finish(){if(fin)return;fin=true;clearInterval(iv);set(100);setTimeout(function(){pre.classList.add('done');document.body.classList.remove('loading');setTimeout(function(){pre.remove()},800)},350)}
+ function done(){ready=true;var w=Math.max(0,MIN-(Date.now()-t0));setTimeout(finish,w)}
+ (document.readyState==='complete'?Promise.resolve():new Promise(function(r){addEventListener('load',r)})).then(function(){return document.fonts&&document.fonts.ready}).then(done,done);
+ setTimeout(finish,6000);
+ if(matchMedia('(prefers-reduced-motion:reduce)').matches){MIN=300}
+})();
+</script>
+
+<header class="nav">
+ <a class="logo" href="#top" aria-label="NARADIG beranda"><b></b>NARADIG</a>
+ <nav aria-label="Menu utama"><a href="#alur">Alur</a><a href="#fitur">Fitur</a><a href="#skor">Skor</a><a href="#prinsip">Prinsip</a></nav>
+ <a class="btn sm" href="#" data-login>Masuk</a>
+</header>
+
+<main id="top">
+<div class="hero">
+ <canvas id="cv" aria-hidden="true"></canvas>
+ <div class="wrap">
+  <div>
+      <h1 class="d">Satu klaim.<br>Seribu versi.<br><em>Lacak jejaknya.</em></h1>
+   <p class="sub">NARADIG mengumpulkan konten dari sumber publik yang sah, mengelompokkan yang mirip, dan menandai perubahan klaim. Setiap temuan punya jejak data dan melewati review manusia.</p>
+   <div class="row"><a class="btn" href="#" data-login>Masuk ke aplikasi →</a><a class="btn ghost" href="#alur">Lihat alurnya</a></div>
+  </div>
+  <div class="ex" aria-label="Contoh penjelajah klaster">
+   <div class="tabs m" role="tablist" id="tabs" aria-label="Pilih contoh klaster"></div>
+   <div id="vers"></div>
+   <div class="pr"><span>Prioritas pemeriksaan</span><div class="bar"><i id="pb"></i></div><b id="ps">55</b></div>
+   <p style="font-size:12px;color:var(--mut);margin-top:12px">Data demo. Klik versi untuk melihat apa yang berubah.</p>
+  </div>
+ </div>
+</div>
+
+<div class="mq m" aria-hidden="true"><div id="mq"></div></div>
+
+<section class="paper" id="alur"><div class="wrap">
+ <p class="m" style="color:#5c5c68;margin-bottom:18px">Cara kerja</p>
+ <h2 class="d">Dari data mentah ke temuan yang bisa diperiksa</h2>
+ <div class="steps">
+  <div class="st"><h3>Kumpulkan</h3><p>Monitoring terjadwal, pencarian topik, atau impor CSV/JSON.</p></div>
+  <div class="st"><h3>Normalisasi</h3><p>Satu skema, deduplikasi, dan catatan asal serta lisensi.</p></div>
+  <div class="st"><h3>Kelompokkan</h3><p>Konten yang mirip dijadikan klaster dengan timeline.</p></div>
+  <div class="st"><h3>Tandai</h3><p>Kandidat perubahan klaim dan bukti pembanding dicocokkan.</p></div>
+  <div class="st"><h3>Tinjau</h3><p>Reviewer menetapkan status. Laporan memuat batasannya.</p></div>
+ </div>
+</div></section>
+
+<section id="fitur"><div class="wrap">
+ <p class="m" style="color:var(--lime);margin-bottom:18px">Fitur</p>
+ <h2 class="d">Semua yang dibutuhkan tim verifikasi, tanpa klaim berlebihan</h2>
+ <div class="bento">
+  <div class="tile t1"><h3>Live Monitoring</h3><p>Topik dipantau terjadwal. Kuota konektor dihormati, dan job ditunda saat batas tercapai, tanpa upaya melewatinya.</p><div class="spark" aria-hidden="true"><i style="height:30%"></i><i style="height:55%"></i><i style="height:40%"></i><i style="height:70%"></i><i style="height:100%"></i><i style="height:60%"></i><i style="height:45%"></i></div></div>
+  <div class="tile t2"><h3>Topic Search</h3><p>Cari sesuai permintaan. Query dan waktu pencarian tersimpan.</p><div class="mock" aria-hidden="true"><div><span>query</span><b>banjir bantuan</b></div><div><span>rentang</span><b>7 hari</b></div></div></div>
+  <div class="tile t3"><h3>Impor Dataset</h3><p>Petakan kolom, validasi, catat lisensi.</p><div class="mock" aria-hidden="true"><div><span>isi</span><b>→ teks</b></div><div><span>tanggal</span><b>→ terbit</b></div></div></div>
+  <div class="tile t4"><h3>Klaster &amp; Timeline</h3><p>Versi klaim disusun menurut waktu terbit.</p><div class="dotl" aria-hidden="true"><i></i><s></s><i></i><s></s><i></i><s></s><i></i></div></div>
+  <div class="tile t5"><h3>Review &amp; Audit</h3><p>Status, catatan, dan riwayat aksi tercatat per pengguna.</p><div class="mock" aria-hidden="true"><div><span>Reviewer</span><b>Bukti membantah</b></div></div></div>
+ </div>
+</div></section>
+
+<section id="skor" style="background:var(--ink2)"><div class="wrap lab">
+ <div><p class="m" style="color:var(--lime);margin-bottom:18px">Skor transparan</p><h2 class="d" style="font-size:clamp(34px,4.4vw,60px)">Bongkar sendiri cara skornya dihitung</h2>
+ <p class="lede">Prioritas pemeriksaan adalah jumlah empat faktor berbobot. Geser nilainya dan lihat hasilnya. Skor ini hanya mengurutkan apa yang diperiksa lebih dulu, bukan menilai benar atau salah.</p></div>
+ <div class="sl">
+  <label>Urgensi, aktivitas 3 hari terakhir (bobot 0,3)<span><input type="range" id="f0" min="0" max="100" value="80"><b></b></span></label>
+  <label>Potensi dampak, jumlah item (bobot 0,3)<span><input type="range" id="f1" min="0" max="100" value="70"><b></b></span></label>
+  <label>Cakupan sumber teramati (bobot 0,2)<span><input type="range" id="f2" min="0" max="100" value="50"><b></b></span></label>
+  <label>Ketidakpastian bukti (bobot 0,2)<span><input type="range" id="f3" min="0" max="100" value="40"><b></b></span></label>
+  <div class="score"><b id="sc">0</b><span>/ 100 skor prioritas</span></div>
+ </div>
+</div></section>
+
+<section class="lime" id="prinsip"><div class="wrap">
+ <p class="m" style="margin-bottom:18px">Prinsip</p>
+ <h2 class="d">Kemiripan konten bukan bukti koordinasi.</h2>
+ <div class="pg">
+  <div><span class="m">01</span><h3>Jejak sumber</h3><p>Asal, waktu kumpul, metode, dan lisensi tercatat di setiap item.</p></div>
+  <div><span class="m">02</span><h3>Skor terbuka</h3><p>Faktor dan bobot terlihat. Skor bukan penilaian kebenaran.</p></div>
+  <div><span class="m">03</span><h3>Manusia memutuskan</h3><p>Sistem hanya mengusulkan kandidat. Status ditetapkan reviewer.</p></div>
+  <div><span class="m">04</span><h3>Sumber yang sah</h3><p>API resmi, RSS, dan dataset berlisensi. Bukan representasi seluruh percakapan publik.</p></div>
+ </div>
+</div></section>
+
+<section id="masuk"><div class="wrap" style="text-align:center">
+ <h2 class="d" style="margin:0 auto">Mulai dari satu topik.</h2>
+ <p class="lede" style="margin:20px auto 34px">Masuk, buat workspace, lalu pantau isu pertama Anda.</p>
+ <a class="btn" href="#" data-login>Masuk ke aplikasi →</a>
+</div></section>
+</main>
+<footer><div class="wrap"><span>© 2026 NARADIG. Data hanya dari sumber terhubung dan bukan representasi seluruh percakapan publik.</span><nav aria-label="Menu footer"><a href="#alur">Alur</a><a href="#fitur">Fitur</a><a href="#prinsip">Prinsip</a><a href="#" data-login>Masuk</a></nav></div></footer>
+
+<div class="md" id="md" aria-hidden="true"><div class="mc" role="dialog" aria-modal="true" aria-labelledby="mt">
+ <button class="mx" id="mclose" type="button" aria-label="Tutup">&times;</button>
+ <div class="logo" style="margin-bottom:4px"><b></b>NARADIG</div>
+ <h2 id="mt">Masuk</h2><p class="sm">Gunakan akun yang diberikan admin Anda.</p>
+ <div class="merr" id="merr" role="alert"></div><div class="msuc" id="msuc" role="status"></div>
+ <form id="lform" novalidate style="display:grid;gap:15px">
+  <label class="f">Email<input class="i" id="le" type="email" autocomplete="username" placeholder="nama@naradig.local"></label>
+  <label class="f">Kata sandi<span class="pw"><input class="i" id="lp" type="password" autocomplete="current-password" placeholder="Kata sandi"><button type="button" id="tpw">Tampilkan</button></span></label>
+  <button class="btn" type="submit" id="lbtn">Masuk</button>
+ </form>
+ <div><p class="sm" style="margin:2px 0 8px">Akun demo (kata sandi naradig123):</p><div class="acc" id="acc"></div></div>
+ <p class="sm" style="margin:0">Mode demo: akun hanya untuk percobaan.</p>
+</div></div>
+<script>
+/* penjelajah klaster */
+const D=[{n:'Bantuan banjir',s:55,v:[['Portal Sultra Kini','Bantuan [500] paket disalurkan','Awal'],['Kabar Nusantara','Dikabarkan [5000] paket disalurkan','Angka berubah'],['Harian Kendari','[Dipastikan] seluruh korban menerima bantuan','Klaim menguat']]},
+{n:'Harga beras',s:55,v:[['Portal Sultra Kini','Harga beras naik jadi Rp[14.000] per kg','Awal'],['Kabar Nusantara','Melonjak hingga Rp[20.000], stok [diduga] menipis','Angka berubah'],['Cek Fakta Demo','Data resmi Rp14.000, klaim Rp20.000 [tidak sesuai]','Koreksi muncul']]},
+{n:'Tarif listrik',s:50,v:[['Warta Bahari','[Beredar kabar] tarif naik 20 persen','Awal'],['Kabar Nusantara','[Dipastikan] tarif naik 20 persen','Klaim menguat'],['Cek Fakta Demo','PLN: tarif [tidak naik] bulan depan','Koreksi muncul']]}];
+let ci=0,vi=1;const tabs=document.getElementById('tabs'),vers=document.getElementById('vers');
+D.forEach((c,i)=>{const b=document.createElement('button');b.textContent=c.n;b.setAttribute('role','tab');b.onclick=()=>{ci=i;vi=1;draw()};tabs.appendChild(b)});
+function draw(){const c=D[ci];[...tabs.children].forEach((b,i)=>{b.classList.toggle('on',i===ci);b.setAttribute('aria-selected',i===ci)});
+ vers.innerHTML=c.v.map((v,i)=>`<button class="ver ${i===vi?'on':''}" data-i="${i}"><span class="n">V${i+1}</span><span><small>${v[0]}</small>${v[1].replace(/\[(.*?)\]/g,'<mark>$1</mark>')}</span><span class="flag ${i?'':'o'}">${v[2]}</span></button>`).join('');
+ vers.querySelectorAll('.ver').forEach(b=>b.onclick=()=>{vi=+b.dataset.i;draw()});
+ document.getElementById('ps').textContent=c.s;document.getElementById('pb').style.width=c.s+'%'}
+draw();
+/* marquee */
+const W=['RSS / Feed','CSV','JSON','Klaster narasi','Timeline','Kandidat perubahan','Bukti pembanding','Skor prioritas','Review manusia','Audit log','Laporan'];
+document.getElementById('mq').innerHTML=(W.map(w=>`<span>${w}</span>`).join('<span>/</span>')+'<span>/</span>').repeat(2);
+/* lab skor */
+const fs=[0,1,2,3].map(i=>document.getElementById('f'+i)),WT=[.3,.3,.2,.2];
+function calc(){let s=0;fs.forEach((f,i)=>{s+=f.value/100*WT[i];f.parentNode.querySelector('b').textContent=(f.value/100).toFixed(2)});document.getElementById('sc').textContent=Math.round(s*100)}
+fs.forEach(f=>f.oninput=calc);calc();
+/* canvas: titik narasi yang saling terhubung */
+const cv=document.getElementById('cv'),x=cv.getContext('2d'),R=matchMedia('(prefers-reduced-motion:reduce)').matches;let w,h,P=[],mx=-999,my=-999;
+function size(){const r=cv.getBoundingClientRect(),d=devicePixelRatio||1;w=r.width;h=r.height;cv.width=w*d;cv.height=h*d;x.setTransform(d,0,0,d,0,0);const n=Math.min(70,Math.round(w*h/16000));P=[...Array(n)].map(()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*2+1}))}
+function tick(){x.clearRect(0,0,w,h);P.forEach(p=>{if(!R){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1}});
+ for(let i=0;i<P.length;i++){const a=P[i];for(let j=i+1;j<P.length;j++){const b=P[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<140){x.strokeStyle=`rgba(217,242,122,${.22*(1-d/140)})`;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}
+  const m=Math.hypot(a.x-mx,a.y-my);if(m<170){x.strokeStyle=`rgba(138,99,238,${.5*(1-m/170)})`;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(mx,my);x.stroke()}
+  x.fillStyle=m<170?'#8a63ee':'rgba(217,242,122,.7)';x.beginPath();x.arc(a.x,a.y,a.r,0,7);x.fill()}
+ if(!R)requestAnimationFrame(tick)}
+addEventListener('resize',()=>{size();if(R)tick()});cv.parentNode.addEventListener('mousemove',e=>{const r=cv.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top});size();tick();
+/* modal login. Ganti APP_URL dengan alamat aplikasi NARADIG Anda */
+const APP_URL='https://claude.ai/artifact/MGePQGrEXBiVwYM7vv3L4r';
+const USERS=[['Admin Demo','admin@naradig.local','Admin'],['Analyst Demo','analyst@naradig.local','Analyst'],['Reviewer Demo','reviewer@naradig.local','Reviewer'],['Viewer Demo','viewer@naradig.local','Viewer']],PH='1f21a644081a7cbe3fea635a1d80978bd2887683f3b6b2cc9194cbbf103b3896';
+const md=document.getElementById('md'),le=document.getElementById('le'),lp=document.getElementById('lp'),merr=document.getElementById('merr'),msuc=document.getElementById('msuc'),lbtn=document.getElementById('lbtn');
+let opener=null,fails=0,until=0;
+async function sha(s){try{const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}catch(e){return s==='naradig123'?PH:''}}
+function showErr(t){merr.textContent=t;merr.style.display=t?'block':'none'}
+function openM(e){if(e)e.preventDefault();opener=document.activeElement;showErr('');msuc.style.display='none';md.classList.add('open');md.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';setTimeout(()=>le.focus(),60)}
+function closeM(){md.classList.remove('open');md.setAttribute('aria-hidden','true');document.body.style.overflow='';if(opener&&opener.focus)opener.focus()}
+document.querySelectorAll('[data-login]').forEach(a=>a.addEventListener('click',openM));
+document.getElementById('mclose').onclick=closeM;
+md.addEventListener('mousedown',e=>{if(e.target===md)closeM()});
+document.addEventListener('keydown',e=>{if(!md.classList.contains('open'))return;if(e.key==='Escape')closeM();
+ if(e.key==='Tab'){const f=[...md.querySelectorAll('button,input')].filter(x=>x.offsetParent!==null),a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}});
+document.getElementById('tpw').onclick=function(){const h=lp.type==='password';lp.type=h?'text':'password';this.textContent=h?'Sembunyikan':'Tampilkan'};
+const acc=document.getElementById('acc');USERS.forEach(u=>{const b=document.createElement('button');b.type='button';b.textContent=u[2];b.onclick=()=>{le.value=u[1];lp.value='naradig123';showErr('');lp.focus()};acc.appendChild(b)});
+document.getElementById('lform').addEventListener('submit',async e=>{e.preventDefault();const em=le.value.trim().toLowerCase(),pw=lp.value;
+ if(until>Date.now())return showErr('Terlalu banyak percobaan. Coba lagi dalam '+Math.ceil((until-Date.now())/1e3)+' detik.');
+ if(!em||!pw)return showErr('Isi email dan kata sandi.');
+ if(!/^\S+@\S+\.\S+$/.test(em))return showErr('Format email tidak valid.');
+ showErr('');lbtn.textContent='Memproses…';lbtn.style.opacity=.6;await new Promise(r=>setTimeout(r,500));lbtn.textContent='Masuk';lbtn.style.opacity=1;
+ const u=USERS.find(x=>x[1]===em),ok=u&&(await sha(pw))===PH;
+ if(!ok){fails++;if(fails>=5){until=Date.now()+3e4;fails=0;return showErr('Terlalu banyak percobaan gagal. Coba lagi dalam 30 detik.')}lp.value='';lp.focus();return showErr('Email atau kata sandi salah.')}
+ try{const k='naradig-v1';let st=JSON.parse(localStorage.getItem(k)||'null')||{ws:[],wsId:null,conn:{'rss-berita':true,'rss-cekfakta':true},quota:{},topics:[],jobs:[],items:[],clusters:[],reviews:{},alerts:[],audit:[],searches:[],seq:1};st.user={name:u[0],role:u[2],email:u[1]};localStorage.setItem(k,JSON.stringify(st))}catch(x){}
+ msuc.textContent='Berhasil masuk sebagai '+u[2]+'. Mengalihkan ke aplikasi…';msuc.style.display='block';setTimeout(()=>{location.href=APP_URL},900)});
+</script>
+</body>
+</html>

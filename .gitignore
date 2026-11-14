@@ -1,0 +1,29 @@
+# env & secrets (jangan pernah commit)
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# data lokal (dibuat ulang otomatis saat start)
+*.db
+*.sqlite3
+backups/
+
+# log & OS
+*.log
+.DS_Store
+Thumbs.db

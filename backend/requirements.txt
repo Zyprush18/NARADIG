@@ -1,0 +1,19 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+apscheduler==3.10.4
+pydantic>=2.6
+
+# Observability/HTTP client untuk test
+httpx==0.27.2
+certifi>=2024.2.2
+
+# Opsional: PostgreSQL/Supabase (SQLite tetap default)
+psycopg[binary,pool]>=3.2
+supabase>=2.0
+
+# Opsional: queue terpisah (fallback inline bila tidak ada Redis)
+celery>=5.3
+redis>=5.0
+
+# Test
+pytest==8.3.3

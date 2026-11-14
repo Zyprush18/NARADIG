@@ -1,0 +1,63 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: naradig
+      POSTGRES_PASSWORD: naradig
+      POSTGRES_DB: naradig
+    ports: ["5432:5432"]
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U naradig"]
+      interval: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+
+  backend:
+    build: ./backend
+    environment:
+      NARADIG_ENV: development
+      NARADIG_SECRET: dev-secret-ganti-di-produksi
+      DATABASE_URL: postgresql://naradig:naradig@db:5432/naradig
+      REDIS_URL: redis://redis:6379/0
+      CORS_ORIGINS: http://localhost:3000
+      NARADIG_TZ: Asia/Makassar
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    ports: ["8000:8000"]
+    volumes: ["backups:/srv/backups"]
+
+  worker:
+    build: ./backend
+    command: celery -A worker worker -l info
+    environment:
+      NARADIG_ENV: development
+      NARADIG_SECRET: dev-secret-ganti-di-produksi
+      DATABASE_URL: postgresql://naradig:naradig@db:5432/naradig
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      backend:
+        condition: service_started
+      redis:
+        condition: service_started
+    volumes: ["backups:/srv/backups"]
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:8000/api/v1
+    depends_on:
+      backend:
+        condition: service_started
+    ports: ["3000:3000"]
+
+volumes:
+  pgdata:
+  backups:
